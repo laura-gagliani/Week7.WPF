@@ -1,0 +1,41 @@
+﻿<Window x:Class="Week7.WPF.ComplexLayout.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Week7.WPF.ComplexLayout"
+        mc:Ignorable="d"
+        Title="Complex Layout" Height="350" Width="800" HorizontalAlignment="Stretch" Visibility="Visible" >
+    <DockPanel >
+        <TextBlock x:Name="tb1" Background="AliceBlue" DockPanel.Dock="Bottom" Height="24">
+            Ciao! Primo blocco di testo. Ancorato in basso
+        </TextBlock>
+        <TextBlock x:Name="tb2" Background="LightPink"  DockPanel.Dock="Left" Width="163" >
+            Secondo, ancorato a sinistra
+        </TextBlock>
+        <TextBlock DockPanel.Dock="Top" Height="30">
+            Terzo blocco di testo.
+        </TextBlock>
+        
+        <DockPanel >
+            <StackPanel Orientation="Vertical"  Background="Cornsilk" DockPanel.Dock="top">
+                <Button x:Name="btn1" Height="30px" Width="200" HorizontalAlignment="Left" Margin="20,10, 5, 20" Click="AddName" >
+                    Aggiungi nuovo nome alla lista
+                </Button >
+                <Button x:Name="btn2" Height="30px" Width="100" HorizontalAlignment="right" Margin="20" Click="Clear">
+                    Svuota la lista
+                </Button>
+            </StackPanel>
+            <StackPanel Background="LightCyan">
+                <TextBlock Visibility="Visible" Background="LightSeaGreen"  Height="19" Margin="10">
+                    Testo sottostante i bottoni
+                </TextBlock>
+                <ListBox x:Name="listNames" Margin="10" Height="80">
+                    <ListBoxItem>Antonia</ListBoxItem>
+                    <ListBoxItem>Laura</ListBoxItem>
+                </ListBox>
+            </StackPanel>
+        </DockPanel>
+    </DockPanel>
+
+</Window>

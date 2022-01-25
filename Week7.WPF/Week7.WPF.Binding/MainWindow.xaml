@@ -1,0 +1,25 @@
+﻿<Window x:Class="Week7.WPF.Binding.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Week7.WPF.Binding"
+        mc:Ignorable="d"
+        Title="BindingDemo" Height="101" Width="617">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="8">
+            <TextBlock Text="Cognome" />
+            <!--lista di persone recuperate da una combobox. la gestione sarà fatta tramite il View-Model -->
+            <ComboBox x:Name="cmbPeople" 
+                      ItemsSource="{Binding Path=People}" 
+                      DisplayMemberPath="LastName"
+                      SelectedItem="{Binding Path=SelectedPerson}"
+                      Width="120" Margin="2,0" />
+            <Button Command="{Binding Path=WelcomeCommand}">Salutami</Button>
+        </StackPanel>
+        <StackPanel>
+            <TextBlock x:Name="txtboxWelcome"
+                       Text="{Binding Path=TxtWelcome}"/>
+        </StackPanel>
+    </StackPanel>
+</Window>
