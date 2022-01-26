@@ -10,23 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Week7.WPF.Esercizio2ECommerce.ViewModels;
 
-namespace Week7.WPF.Esercizio2ECommerce.Views
+namespace Avanade.Allocation.WPF.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SignInView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SignInView : Window
     {
-        public MainWindow()
+        public SignInView()
         {
             InitializeComponent();
-                        
         }
-
-        
     }
 }

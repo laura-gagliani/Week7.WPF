@@ -10,8 +10,8 @@ namespace Week7.WPF.Esercizio2ECommerce.Models
     {
         private List<Product> _products = new List<Product>()
         {
-            new Product() {Name = "Nike Sneakers", Description = "White faux leather", Price = 89.90},
-            new Product() {Name = "Chanel Boots", Description = "Are you wearing the...", Price = 9999.99}
+            new Product() {Name = "Nike Sneakers", Description = "White faux leather", Price = 89},
+            new Product() {Name = "Chanel Boots", Description = "Are you wearing the...", Price = 990}
         };
 
         public IList<Product> FetchAll()

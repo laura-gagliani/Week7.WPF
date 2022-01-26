@@ -22,9 +22,14 @@ namespace Week7.WPF.Esercizio2ECommerce
 
             IProductRepository productRepo = new MockProductRepository();
             MainWindowVM mwvm = new MainWindowVM(productRepo);
-            MainWindow mainWindow = new MainWindow(mwvm);   //il DataContext gliel'ho collegato nel costruttore della MainWindowViewModel
+            MainWindow mainWindow = new MainWindow();   //il DataContext gliel'ho collegato nel costruttore della MainWindow
+            MainWindow.DataContext = mwvm;
+
 
             mainWindow.Show();
+            
+
+            //tutto corretto!
             
         }
     }

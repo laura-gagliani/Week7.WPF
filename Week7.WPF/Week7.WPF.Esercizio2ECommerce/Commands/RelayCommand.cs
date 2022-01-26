@@ -11,20 +11,28 @@ namespace Week7.WPF.Esercizio2ECommerce.Commands
     {
         public event EventHandler? CanExecuteChanged;
 
-
         private Action<object> executeMethod;
         private Predicate<object> canExecuteMethod;
 
-
+        public RelayCommand(Action<object> Execute, Predicate<object> CanExecute)
+        {
+            executeMethod = Execute;
+            canExecuteMethod = CanExecute;
+        }
 
         public bool CanExecute(object? parameter)
         {
-            throw new NotImplementedException();
+            return (canExecuteMethod == null) ? true : canExecuteMethod.Invoke(parameter);
         }
 
         public void Execute(object? parameter)
         {
-            throw new NotImplementedException();
+            executeMethod?.Invoke(parameter); //se è non null invoca...
+        }
+
+        internal void RaiseCanExecuteChanged()
+        {
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

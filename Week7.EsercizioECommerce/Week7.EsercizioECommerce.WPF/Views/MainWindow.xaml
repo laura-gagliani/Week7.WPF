@@ -1,21 +1,20 @@
-﻿<Window x:Class="Week7.WPF.Esercizio2ECommerce.Views.MainWindow"
+﻿<Window x:Class="Week7.EsercizioECommerce.WPF.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Week7.WPF.Esercizio2ECommerce.Views"
-        xmlns:viewmodel="clr-namespace:Week7.WPF.Esercizio2ECommerce.ViewModels"
-        xmlns:converter="clr-namespace:Week7.WPF.Esercizio2ECommerce.Converters"
+        xmlns:local="clr-namespace:Week7.EsercizioECommerce.WPF.Views"
+        xmlns:viewmodel="clr-namespace:Week7.EsercizioECommerce.WPF.ViewModels"
+        xmlns:converter="clr-namespace:Week7.EsercizioECommerce.WPF.Converters"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowVM}"
         Title="MainWindow" Height="450" Width="800"
-        d:DataContext="{d:DesignInstance viewmodel:MainWindowVM}"
-        >
+         >
 
     <Window.Resources>
-        <converter:BoolToVisibilityConverter x:Key="BoolToVisibility" />
+        <converter:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
     </Window.Resources>
-    
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -29,8 +28,8 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BorderThickness="2" BorderBrush="CornflowerBlue" Margin="6">
-            <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="40">
-                Es2
+            <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="30">
+                E-Commerce
             </Label>
         </Border>
         <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" BorderThickness="2" BorderBrush="CornflowerBlue" Margin="6"></Border>
@@ -42,17 +41,18 @@
             </ListBox>
         </Border>
         <Border Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="1" BorderThickness="2" BorderBrush="CornflowerBlue" Margin="6">
-            <Button Command="{Binding Path=AddCartTotalCommand}" >
+            <Button Command="{Binding Path=AddCartTotalCommand}" 
+                    Margin="140,20">
                 Add to cart
             </Button>
         </Border>
         <Border Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="1" BorderThickness="2" BorderBrush="CornflowerBlue" Margin="6">
             <StackPanel>
-                <CheckBox IsChecked="{Binding Path=IsChecked}" >
+                <CheckBox IsChecked="{Binding Path=ShowCartCheck}" >
                     Show Cart Amount
                 </CheckBox>
                 <TextBlock Background="AliceBlue" Margin="10" FontSize="16" 
-                           Visibility="{Binding Path=IsChecked, Converter={StaticResource BoolToVisibility}}"
+                           Visibility="{Binding Path=ShowCartCheck, Converter={StaticResource BoolToVisibility}}"
                            x:Name="textCartAmount"
                            Text="{Binding Path=TxtCartAmount}"
                            />
@@ -68,16 +68,15 @@
                 </Grid.RowDefinitions>
                 <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" BorderThickness="2" BorderBrush="DarkBlue" Margin="6"></Border>
                 <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" BorderThickness="2" BorderBrush="DarkBlue" Margin="6">
-                    <StackPanel>
-                        <Button Background="LightGray" Margin="30">
-                            View Product
-                        </Button>
-                    </StackPanel>
-
+                    <Button Command="{Binding Path=ShowDetailsCommand}"
+                        Background="LightGray" Margin="0"
+                            HorizontalAlignment="Center" VerticalAlignment="Center">
+                        View Product Details
+                    </Button>
                 </Border>
                 <Border Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="1" BorderThickness="2" BorderBrush="DarkBlue" Margin="6">
-                    <TextBlock x:Name="txtProductDetails" Height="20" Margin="10">
-                        Product details
+                    <TextBlock Text="{Binding Path=ProductDetails}" x:Name="txtProductDetails" Height="20" Margin="10">
+                        
                     </TextBlock>
                 </Border>
             </Grid>
