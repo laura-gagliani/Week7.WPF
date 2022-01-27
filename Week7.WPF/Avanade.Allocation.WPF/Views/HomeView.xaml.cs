@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Avanade.Allocation.WPF.Messaging.Employees;
+using Avanade.Allocation.WPF.Messaging.Misc;
+using Avanade.Allocation.WPF.ViewModels;
+using GalaSoft.MvvmLight.Messaging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +25,20 @@ namespace Avanade.Allocation.WPF.Views
     {
         public HomeView()
         {
+            //qui dobbiamo iscriverci al messaggio che dice "apri la finestra employees"
+            Messenger.Default.Register<ShowEmployeesMessage>(this, OnShowEmployeesMessageReceived);
+
             InitializeComponent();
+        }
+
+        private void OnShowEmployeesMessageReceived(ShowEmployeesMessage message)
+        {
+            // inizializza view e viewmodel per la nuova roba da mostrare e apre la finestra
+            EmployeeEditorView empEditorView = new EmployeeEditorView();
+            EmployeeEditorViewModel empEditorVM = new EmployeeEditorViewModel();
+            empEditorView.DataContext = empEditorVM;
+
+            empEditorView.Show();
         }
     }
 }

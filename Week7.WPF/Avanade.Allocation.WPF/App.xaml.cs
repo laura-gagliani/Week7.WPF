@@ -22,7 +22,9 @@ namespace Avanade.Allocation.WPF
         {
             //mi devo registrare agli eventi "invio messaggio di dialogo"
             //mi metto in ascolto di eventuali messaggi "DialogMessage"
-            Messenger.Default.Register<DialogMessage>(this, OnDialogMEssageReceived);
+            Messenger.Default.Register<DialogMessage>(this, OnDialogMessageReceived);
+
+
 
 
             //inizializziamo il MockDB (visto che abbiamo avviato la lista in un metodo!)
@@ -46,10 +48,17 @@ namespace Avanade.Allocation.WPF
 
 
         }
-        //metodo che scatta quando arriva un qualsiasi messaggio di tipo DialogMessage
-        private void OnDialogMEssageReceived(DialogMessage message)
+
+        private void OnShutDownApplicationMessageReceived(ShutDownApplicationMessage quitMessage)
         {
-            MessageBoxResult result = MessageBox.Show(message.Content, message.Title);
+            
+
+        }
+
+        //metodo che scatta quando arriva un qualsiasi messaggio di tipo DialogMessage
+        private void OnDialogMessageReceived(DialogMessage message)
+        {
+            MessageBoxResult result = MessageBox.Show(message.Content, message.Title, message.Buttons, message.Icon);
             
         }
     }
