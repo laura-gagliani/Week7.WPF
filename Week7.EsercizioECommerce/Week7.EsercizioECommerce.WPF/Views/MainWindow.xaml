@@ -27,56 +27,57 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BorderThickness="2" BorderBrush="CornflowerBlue" Margin="6">
-            <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="30">
-                E-Commerce
+        <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BorderThickness="0" BorderBrush="CornflowerBlue" Margin="6">
+            <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="45"
+                   Background="SlateGray" Foreground="White" FontFamily="Georgia"
+                   VerticalAlignment="Center" Margin="0">
+                Amazon
             </Label>
         </Border>
-        <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" BorderThickness="2" BorderBrush="CornflowerBlue" Margin="6"></Border>
-        <Border Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="1" BorderThickness="2" BorderBrush="CornflowerBlue" Margin="6">
+        <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" BorderThickness="2" BorderBrush="SlateGray" Margin="6"></Border>
+        <Border Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="1" BorderThickness="2" BorderBrush="SlateGray" Margin="6">
             <ListBox x:Name="listProducts"
                      ItemsSource="{Binding Path=Products}"
                      DisplayMemberPath ="Name"
                      SelectedItem="{Binding Path=SelectedProduct}">
             </ListBox>
         </Border>
-        <Border Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="1" BorderThickness="2" BorderBrush="CornflowerBlue" Margin="6">
-            <Button Command="{Binding Path=AddCartTotalCommand}" 
-                    Margin="140,20">
-                Add to cart
-            </Button>
+        <Border Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="1" BorderThickness="2" BorderBrush="SlateGray" Margin="6">
+            <StackPanel Orientation="Vertical">
+                <Button Command="{Binding AddCartTotalCommand}" FontSize="14" Background="GhostWhite" BorderBrush="SlateGray"
+                     Margin="15" Content="Add to cart"/>
+                <CheckBox Margin="10,0" IsChecked="{Binding ShowCartCheck}" Content="Show cart amount"/>
+            </StackPanel>
         </Border>
-        <Border Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="1" BorderThickness="2" BorderBrush="CornflowerBlue" Margin="6">
+        <Border Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="1" BorderThickness="2" BorderBrush="SlateGray" Margin="6">
             <StackPanel>
-                <CheckBox IsChecked="{Binding Path=ShowCartCheck}" >
-                    Show Cart Amount
-                </CheckBox>
-                <TextBlock Background="AliceBlue" Margin="10" FontSize="16" 
+
+                <TextBlock Height="30" Margin="20" FontSize="16" 
                            Visibility="{Binding Path=ShowCartCheck, Converter={StaticResource BoolToVisibility}}"
-                           x:Name="textCartAmount"
+                           VerticalAlignment="Center" x:Name="textCartAmount"
                            Text="{Binding Path=TxtCartAmount}"
                            />
             </StackPanel>
 
         </Border>
-        <Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" BorderThickness="2" BorderBrush="CornflowerBlue" Margin="6">
+        <Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" BorderThickness="2" >
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" BorderThickness="2" BorderBrush="DarkBlue" Margin="6"></Border>
-                <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" BorderThickness="2" BorderBrush="DarkBlue" Margin="6">
-                    <Button Command="{Binding Path=ShowDetailsCommand}"
-                        Background="LightGray" Margin="0"
+                <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" BorderThickness="2" BorderBrush="SlateGray" Margin="6"></Border>
+                <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" BorderThickness="0" Background="GhostWhite" Margin="6,6,6,0">
+                    <Button Command="{Binding Path=ShowDetailsCommand}" BorderThickness="2" BorderBrush="SlateGray"
+                        Background="White" Height="50" Width="200" FontSize="14" 
                             HorizontalAlignment="Center" VerticalAlignment="Center">
                         View Product Details
                     </Button>
                 </Border>
-                <Border Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="1" BorderThickness="2" BorderBrush="DarkBlue" Margin="6">
-                    <TextBlock Text="{Binding Path=ProductDetails}" x:Name="txtProductDetails" Height="20" Margin="10">
-                        
+                <Border Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="1" BorderThickness="0" Background="GhostWhite" Margin="6,0,6,6">
+                    <TextBlock Text="{Binding Path=ProductDetails}" x:Name="txtProductDetails" Height="90" Margin="8" FontSize="14">
+
                     </TextBlock>
                 </Border>
             </Grid>

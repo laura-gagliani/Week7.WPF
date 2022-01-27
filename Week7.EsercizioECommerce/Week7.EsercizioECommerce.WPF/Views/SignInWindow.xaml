@@ -17,14 +17,16 @@
             <RowDefinition Height="200"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Border Grid.Row="1" Grid.Column="1" BorderThickness="10" BorderBrush="CornflowerBlue" >
+        <Border Grid.Row="1" Grid.Column="1" BorderThickness="6" BorderBrush="SlateGray" >
+            <Border BorderThickness="2" BorderBrush="GhostWhite">
+                <Border.Background>
+                    <RadialGradientBrush RadiusX="1" >
+                        <GradientStop Color="GhostWhite" Offset="0.0"/>
+                        <GradientStop Color="SlateGray" Offset="1.2"/>
+                    </RadialGradientBrush>
+                </Border.Background>
+            </Border>
             
-            <Border.Background>
-                <RadialGradientBrush RadiusX="1" >
-                    <GradientStop Color="FloralWhite" Offset="0.0"/>
-                    <GradientStop Color="CornflowerBlue" Offset="1.2"/>
-                </RadialGradientBrush>
-            </Border.Background>
         </Border>
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.ColumnDefinitions>
@@ -33,37 +35,37 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"/>
                 <RowDefinition/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition/>
+                <RowDefinition />
                 <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="1.5*"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Column="1" Grid.Row="0" 
-                       Text="Log in to your account" FontStyle="Italic"
-                       FontSize="20" Foreground="Black" FontFamily="Calibri" 
+                       Text="Log in to your account" FontStyle="Italic" Margin="0,15,0,0"
+                       FontSize="18" Foreground="Black" FontFamily="Georgia" 
                        HorizontalAlignment="Center" VerticalAlignment="Center">
             </TextBlock>
             <TextBlock Grid.Column="1" Grid.Row="1" 
                        Text="Username:" 
-                       FontSize="16" Foreground="Black" FontFamily="Calibri"
-                       VerticalAlignment="Center">
+                       FontSize="14" Foreground="Black" FontFamily="Georgia"
+                       VerticalAlignment="Bottom">
             </TextBlock>
             <TextBox Grid.Column="1" Grid.Row="2"
-                     Margin="6,8" VerticalAlignment="Center" 
-                     Text="{Binding Path=Username}">
+                     Margin="6,8" VerticalAlignment="Top" 
+                     Text="{Binding Path=Username}" >
             </TextBox>
             <TextBlock Grid.Column="1" Grid.Row="3" 
                        Text="Password:" 
-                       FontSize="16" Foreground="Black" FontFamily="Calibri"
-                       VerticalAlignment="Center">
+                       FontSize="14" Foreground="Black" FontFamily="Georgia"
+                       VerticalAlignment="Bottom">
             </TextBlock>
             <TextBox Grid.Column="1" Grid.Row="4"
-                     Margin="6,8" VerticalAlignment="Center" 
+                     Margin="6,8" VerticalAlignment="Top" 
                      Text="{Binding Path=Password}">
             </TextBox>
-            <Button Grid.Column="1" Grid.Row="5"
+            <Button Grid.Column="1" Grid.Row="5" FontFamily="Georgia"
                     Margin="70,0,70,15" Content="Enter"
                     Background="White" FontWeight="SemiBold"
                     Command="{Binding Path=SignInCommand}">

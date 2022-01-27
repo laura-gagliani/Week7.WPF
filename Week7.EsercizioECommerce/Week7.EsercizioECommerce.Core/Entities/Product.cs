@@ -14,7 +14,7 @@ namespace Week7.EsercizioECommerce.Core.Entities
 
         public override string ToString()
         {
-            return $"{Name} - {Description} - {Price}";
+            return $"Product name: {Name}\nDescription: {Description}\nPrice: {Price} $";
         }
     }
 }

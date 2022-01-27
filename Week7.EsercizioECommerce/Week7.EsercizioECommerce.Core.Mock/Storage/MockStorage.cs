@@ -25,9 +25,9 @@ namespace Week7.EsercizioECommerce.Core.Mock.Storage
 
             Products = new List<Product>();
 
-            Products.Add(new Product() {Name= "Scarpe X", Description = "...", Price = 56.80 });
-            Products.Add(new Product() {Name= "Scarpe Y", Description = "...", Price = 32.00 });
-            Products.Add(new Product() {Name= "Scarpe Z", Description = "...", Price = 99.90 });
+            Products.Add(new Product() {Name= "Shoe x", Description = "...", Price = 56.80 });
+            Products.Add(new Product() {Name= "Shoe y", Description = "...", Price = 32.00 });
+            Products.Add(new Product() {Name= "Shoe z", Description = "...", Price = 99.90 });
 
         }
     }

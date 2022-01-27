@@ -96,8 +96,7 @@ namespace Week7.EsercizioECommerce.WPF.ViewModels
             {
                 _totalCartAmount += SelectedProduct.Price;
                 RaisePropertyChanged();
-                TxtCartAmount = _totalCartAmount.ToString();
-                //qui lei sommava la prop numerica e poi modificava il TxtCart. dalla main window si traccia il TxtCart, non il numerico
+                TxtCartAmount = $"Total: {_totalCartAmount.ToString()} $";
             }
         }
 
