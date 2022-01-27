@@ -11,8 +11,8 @@ namespace Avanade.Allocation.WPF.ViewModels
 {
     public class HomeViewModel : ViewModelBase
     {
-        private ICommand ExitCommand { get; set; }
-        private ICommand ShowEmployeesCommand { get; set; }
+        public ICommand ExitCommand { get; set; }
+        public ICommand ShowEmployeesCommand { get; set; }
 
         public HomeViewModel()
         {
