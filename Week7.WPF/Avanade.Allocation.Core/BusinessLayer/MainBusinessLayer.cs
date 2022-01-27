@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Avanade.Allocation.Core.BusinessLayer
 {
-    public class MainBusinessLayer 
+    public class MainBusinessLayer
     {
 
         private IEmployeeRepository _EmployeeRepository;
@@ -19,7 +19,7 @@ namespace Avanade.Allocation.Core.BusinessLayer
             _EmployeeRepository = employeeRepository;
         }
 
-        
+
 
         //qui vogliamo restituire la lista dei dipendenti
         public IList<Employee> FetchAllEmployees()
@@ -29,7 +29,7 @@ namespace Avanade.Allocation.Core.BusinessLayer
 
         public Response CreateEmployee(Employee e)
         {
-            if (e != null)
+            if (e == null)
                 return new Response { Success = false, Message = "Invalid entity" };
             if (e.Salary < 0.0)
                 return new Response { Success = false, Message = "Salary must be positive" };
@@ -46,7 +46,7 @@ namespace Avanade.Allocation.Core.BusinessLayer
             if (e.Id < 0)
                 return new Response { Success = false, Message = $"Id {e.Id} is invalid" };
 
-            Employee empToDelete =_EmployeeRepository.FetchAll().Where(x => x.Id.Equals(e.Id)).SingleOrDefault();
+            Employee empToDelete = _EmployeeRepository.FetchAll().Where(x => x.Id.Equals(e.Id)).SingleOrDefault();
             if (empToDelete == null)
                 return new Response { Success = false, Message = $"No employee with Id = {e.Id} was found" };
 
@@ -54,10 +54,15 @@ namespace Avanade.Allocation.Core.BusinessLayer
             return new Response() { Success = true, Message = $"Employee {empToDelete.FirstName} {empToDelete.LastName} successfully created" };
         }
 
-        public Response UpdateEmployee(Employee e)
+        public Response UpdateEmployee(Employee updatedEmployee)
         {
-            //TODO: implementa update
-            throw new NotImplementedException();
+            if (updatedEmployee == null)
+                return new Response { Success = false, Message = "Invalid entity" };
+
+            _EmployeeRepository.Update(updatedEmployee);
+            return new Response() { Success = true, Message = $"Employee with Id {updatedEmployee.Id} successfully updated" };
+
+
         }
     }
 }

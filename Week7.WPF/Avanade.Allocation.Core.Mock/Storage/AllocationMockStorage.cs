@@ -22,6 +22,7 @@ namespace Avanade.Allocation.Core.Mock.Storage
             //aggiunta utenti di default
             Users.Add(new User() { Id = 1, UserName = "mario.rossi", Password = "12345", Email = "mario@gmail.com" });
             Users.Add(new User() { Id = 2, UserName = "giuseppe.verdi", Password = "abcde", Email = "giuseppe@gmail.com" });
+            Users.Add(new User() { Id = 3, UserName = "a", Password = "a", Email = "giuseppe@gmail.com" });
 
 
             Employees = new List<Employee>();

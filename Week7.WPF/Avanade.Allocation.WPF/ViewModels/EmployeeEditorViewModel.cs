@@ -2,8 +2,10 @@
 using Avanade.Allocation.Core.Entities;
 using Avanade.Allocation.Core.Mock.Repositories;
 using Avanade.Allocation.Core.Repositories;
+using Avanade.Allocation.WPF.Messaging.Employees;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -69,7 +71,7 @@ namespace Avanade.Allocation.WPF.ViewModels
 
         private void ExecuteCreateEmployee()
         {
-            throw new NotImplementedException();
+            Messenger.Default.Send(new ShowCreateEmployeeMessage());
         }
 
     }

@@ -33,10 +33,10 @@ namespace Avanade.Allocation.Core.Mock.Repositories
 
         public void Update(Employee updatedEmp)
         {
-            Employee existingEMp = AllocationMockStorage.Employees.SingleOrDefault(x=> x.Id == updatedEmp.Id); //mi assicuro che ci sia qualcuno con id giusto
+            Employee existingEmp = AllocationMockStorage.Employees.SingleOrDefault(x=> x.Id == updatedEmp.Id); //mi assicuro che ci sia qualcuno con id giusto
 
             //l'update si simula con rimozione + riaggiunta
-            AllocationMockStorage.Employees.Remove(existingEMp);
+            AllocationMockStorage.Employees.Remove(existingEmp);
             AllocationMockStorage.Employees.Add(updatedEmp);
 
         }

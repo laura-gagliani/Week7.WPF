@@ -23,6 +23,7 @@ namespace Avanade.Allocation.WPF
             //mi devo registrare agli eventi "invio messaggio di dialogo"
             //mi metto in ascolto di eventuali messaggi "DialogMessage"
             Messenger.Default.Register<DialogMessage>(this, OnDialogMessageReceived);
+            Messenger.Default.Register<ShutDownApplicationMessage>(this, _ => Current.Shutdown()); // il _ significa tipo parametri di default
 
 
 
@@ -49,16 +50,16 @@ namespace Avanade.Allocation.WPF
 
         }
 
-        private void OnShutDownApplicationMessageReceived(ShutDownApplicationMessage quitMessage)
-        {
-            
-
-        }
+        
 
         //metodo che scatta quando arriva un qualsiasi messaggio di tipo DialogMessage
         private void OnDialogMessageReceived(DialogMessage message)
         {
             MessageBoxResult result = MessageBox.Show(message.Content, message.Title, message.Buttons, message.Icon);
+
+            //se viene specificato il callback va "rimandato" il result
+            if (message.Callback != null)
+                message.Callback(result);
             
         }
     }
