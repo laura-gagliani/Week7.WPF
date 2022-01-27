@@ -37,7 +37,7 @@ namespace Week7.EsercizioECommerce.WPF
             SignInWindowVM signinVM = new SignInWindowVM();
             signInWindow.DataContext = signinVM;
 
-            //signInWindow.Show();
+            signInWindow.Show();
             mainWindow.Show();
 
 

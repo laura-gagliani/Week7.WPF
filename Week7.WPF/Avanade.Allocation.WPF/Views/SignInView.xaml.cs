@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Avanade.Allocation.WPF.Messaging.Misc;
+using Avanade.Allocation.WPF.ViewModels;
+using GalaSoft.MvvmLight.Messaging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +25,22 @@ namespace Avanade.Allocation.WPF.Views
         public SignInView()
         {
             InitializeComponent();
+
+            //questa finestra deve stare in ascolto...per messaggi di showhomeview -> a cui rispondere col metodo "onshowhomeviewmessageRECEIVED"
+            Messenger.Default.Register<ShowHomeViewMessage>(this, OnShowHomeViewMessageReceived);
+        }
+
+        private void OnShowHomeViewMessageReceived(ShowHomeViewMessage message)
+        {            
+            //inizializzo la homeView e il suo viewmodel
+            HomeView homeView = new HomeView();
+            HomeViewModel homeVM = new HomeViewModel();
+
+            homeView.DataContext = homeVM;
+
+            //apro la nuova finestra e chiudo questa di signin
+            homeView.Show();
+            this.Close();
         }
     }
 }

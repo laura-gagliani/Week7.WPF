@@ -47,7 +47,7 @@ namespace Avanade.Allocation.Core.BusinessLayer
             var response = SignIn(userName, password);
 
             //simuliamo un ritardo di 5 sec
-            await Task.Delay(5000);
+            //await Task.Delay(5000);
 
             return response;
         }

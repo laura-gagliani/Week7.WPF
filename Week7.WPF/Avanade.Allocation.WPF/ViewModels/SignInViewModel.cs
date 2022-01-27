@@ -24,18 +24,24 @@ namespace Avanade.Allocation.WPF.ViewModels
         public string UserName
         {
             get { return _userName; }
-            set { _userName = value; 
+            set
+            {
+                _userName = value;
                 RaisePropertyChanged();
-                SignInCommand.RaiseCanExecuteChanged();            }
+                SignInCommand.RaiseCanExecuteChanged();
+            }
         }
 
         private string _password;
         public string Password
         {
             get { return _password; }
-            set { _password = value; 
-                RaisePropertyChanged(); 
-                SignInCommand.RaiseCanExecuteChanged(); }
+            set
+            {
+                _password = value;
+                RaisePropertyChanged();
+                SignInCommand.RaiseCanExecuteChanged();
+            }
         }
 
 
@@ -44,7 +50,7 @@ namespace Avanade.Allocation.WPF.ViewModels
         public SignInViewModel()
         {
             SignInCommand = new RelayCommand(
-                () => ExecuteSignIn(), 
+                () => ExecuteSignIn(),
                 () => CanExecuteSignIn());
             //if (IsInDesignMode)
             //{
@@ -70,11 +76,12 @@ namespace Avanade.Allocation.WPF.ViewModels
             AuthenticationBusinessLayer layer = new AuthenticationBusinessLayer(repo);
 
             //eseguo l'autenticazione (async) mediante il bl appena creato 
-            Response response = await layer.SignInAsync(UserName, Password);    
+            Response response = await layer.SignInAsync(UserName, Password);
             if (response.Success)
             {
                 //apri finestra di dialogo con contenuto 
                 Messenger.Default.Send(new DialogMessage { Title = "Log-In Effettuato", Content = response.Message });
+                Messenger.Default.Send(new ShowHomeViewMessage());
             }
             else
             {
